@@ -50,7 +50,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
 
-
     
     
     //濾鏡套圖, 回傳UIIMG
@@ -96,7 +95,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
     }
     
-    
+    @IBAction func shareOnFB() {
+        var shareToFacebook: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        shareToFacebook.add(pickedImage.image)
+        self.present(shareToFacebook, animated: true, completion: nil)
+    }
     
     @IBAction func cameraButtonAction(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.camera)
